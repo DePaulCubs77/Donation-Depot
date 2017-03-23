@@ -1,0 +1,27 @@
+body {
+  background: #ececec;
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  margin: auto;
+  background: #eee8aa;
+  padding: 10px 10px;
+  width: 1000px;
+  height: 500px;
+
+
+}
+
+.main-side {
+  background: #48d1cc;
+  width: 300px;
+  height: 700px;
+  padding: 10px 10px 10px 10px;
+}
+.main-foot {
+  background:#1e90ff;
+}
+
