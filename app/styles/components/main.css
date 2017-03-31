@@ -1,27 +1,54 @@
 body {
   background: #ececec;
-  font-family: Helvetica;
+   
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 .main-content {
+  
+  font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
   margin: auto;
-  background: #eee8aa;
+  background: #ececec;
+  
   padding: 10px 10px;
-  width: 1000px;
+  width: 1100px;
+  
   height: 500px;
-
 
 }
 
 .main-side {
-  background: #48d1cc;
+  background: #87ceeb;
   width: 300px;
   height: 700px;
   padding: 10px 10px 10px 10px;
 }
 .main-foot {
-  background:#1e90ff;
+   
+   background: #ececec;
 }
+
+.imageclass {
+  width: 1030px;
+  height: 550px;
+}
+.imageclass2 { 
+  width: 1030px;
+  height: 550px;
+
+}
+
+.imageclass3 {
+  width: 1050px;
+  height: 550px;
+}
+
+.imageclass4 {
+  width: 1030px;
+  height: 550px;
+}
+
 

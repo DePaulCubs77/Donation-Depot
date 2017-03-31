@@ -1,45 +1,36 @@
 import * as React from 'react';
-import { Select, Button, DatePicker, Row, Col } from 'antd';
-import moment from 'moment';
+import { Select, Menu, Dropdown, Icon, Button, Row, Col } from 'antd';
 const Option = Select.Option;
-
 class CommentForm extends React.Component {
 
   // Form Event Handlers
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.submitAction(this.state);
+  updateInput(event) {
+    const newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState);
   }
-
   handleUpdateTextInput(event) {
     const newState = {};
     newState[event.target.id] = event.target.value;
     this.setState(newState);
   }
-
+  handleSubmitForm(event) {
+    event.preventDefault();
+    this.props.action(this.state);
+  }
   handleUpdateCategory(newVal) {
     this.setState({
-      category: newVal
+      comdescription: newVal
     });
   }
-
-  handleUpdateDate(newValMoment, newValString) {
-    this.setState({
-      date: newValString
-    });
-  }
-
-  // Setting Initial State
+  // Initial State
 
   initializeState() {
     this.setState({
-      title: this.props.defaultTitle || '',
-      category: this.props.defaultCategory || '',
-      date: this.props.defaultDate || moment()
+          
     });
   }
-
   // Lifecycle Methods
 
   componentWillMount() {
@@ -49,66 +40,70 @@ class CommentForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={(event) => this.handleSubmit(event)}>
-          <div className='form-row'>
-            <label htmlFor='title'>Title</label><br/>
-            <input
-              defaultValue={this.state.title}
-              type='text'
-              id='title'
-              onChange={(event) => this.handleUpdateTextInput(event)}
-            />
-          </div>
+      <Row>
+        <Col span={24}><br></br></Col>
 
-          <div className='form-row'>
-            <label htmlFor='category'>Category</label><br/>
-            <Select
-              defaultValue={this.state.category}
-              style={{ width: 120 }}
-              onChange={(newVal) => this.handleUpdateCategory(newVal)}
-            >
-              <Option value="Programming">Programming</Option>
-              <Option value="Javascript">Javascript</Option>
-              <Option value="React">React</Option>
-            </Select>
-          </div>
+      </Row>
+      <Row>
+        <Col span={24}><br></br></Col>
 
-          <div className='form-row'>
-            <DatePicker
-              defaultValue={moment(this.state.date)}
-              onChange={(newValMoment, newValString) =>
-                this.handleUpdateDate(newValMoment, newValString)
-              }
-            />
-          </div>
+      </Row>
+      <Row>
+        <Col span={8}></Col>
+        <Col span={16}>
+          <h3>Add A Comment Or Tip </h3>
+        </Col>
 
-          <div className='form-row'>
-            <Button
-              type='primary'
-              htmlType='submit'
-              loading={this.props.loading}
-            >
-              Save
-            </Button>
-          </div>
-        </form>
+      </Row>
+      <Row>
+        <Col span={24}><br></br></Col>
+
+      </Row>
+      <Row>
+        <Col span={24}><br></br></Col>
+
+      </Row>
+
+      <Row>
+        <Col span={5}></Col>
+        <Col span={14}>
+
+      <form onSubmit={(event) => this.handleSubmitForm(event)}>
+        <div className='form-row'>
+          <label htmlFor='comdescription'>Comment:</label><br/>
+          <input
+          style={{ width: 600 }}
+          defaultValue={this.state.comdescription}
+            id='comdescription'
+            type='text'
+            onChange={(event) => this.handleUpdateTextInput(event)}
+            
+            required
+          />
+        </div>
+        
+        <div className='form-row'>
+          <Button
+            type='primary'
+            loading={this.props.loading}
+            htmlType='submit'
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+
+      </Col>
+      <Col span={5}></Col>
+      </Row>
       </div>
-    )
+    );
   }
 }
 
-// Props for PostForm component
-// Requires a "submitAction" function
-// Optional "loading" boolean value
-// Optional "defaultTitle" string value
-// Optional "defaultCategory" string value
-// Optional "defaultDate" string value
 CommentForm.propTypes = {
-  submitAction: React.PropTypes.func.isRequired,
-  loading: React.PropTypes.bool,
-  defaultTitle: React.PropTypes.string,
-  defaultCategory: React.PropTypes.string,
-  defaultDate: React.PropTypes.string
+  action: React.PropTypes.func.isRequired,
+  loading: React.PropTypes.bool
+  
 };
-
 export { CommentForm };

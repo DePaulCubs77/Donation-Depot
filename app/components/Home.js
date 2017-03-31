@@ -1,35 +1,21 @@
 import * as React from 'react';
-import { Row, Col } from 'antd';
-
-
-
-
-
+import { Row, Col, Carousel } from 'antd';
 
 class Home extends React.Component {
   render() {
-    return (
+    return (     
+  <div>
+     
+      <Carousel autoplay effect="fade">
+        <div><img className="imageclass" src="images/donation-depot.jpg" /></div>
+        <div><img className="imageclass2" src="images/donategal.jpg" /></div>
+        <div><img className="imageclass3" src="images/uberkids.jpg" /></div>
+        <div><img className="imageclass4" src="images/donatenow.jpg" /></div>
+      </Carousel>
 
 
+  </div>
 
-      
-<div>
-  <h3> Welcome </h3>
-  <Row>
-      <Col span={12}>
-      <h4>One Person's Trash, is Another's Treasure</h4>
-      Keep more items out of
-       land fills.  Help others when you donate.
-        De-Clutter your Home</Col>
-      <Col span={12}>Here are some great sites to
-      check out</Col>
-    </Row>
-    
-    
-        </div>
-        
- 
-  
     );
   }
 }

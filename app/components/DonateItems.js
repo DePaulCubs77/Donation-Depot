@@ -6,33 +6,83 @@ import { Select, Row, Col } from 'antd';
 // Make a fun facts header with advantages etc. to donating (tax deductable , helping people in need)
 // list little known items to donate, besides the usual
 
-
 class DonateItems extends React.Component {
-
-
-  
 
   render() {
     return (
       <div>
-        <h3>Fun Facts: </h3>
-        <h3>Did you Know </h3>
-        <h3>you could Donate. . .</h3>
+  
+        <h3>Did you Know ......</h3>
+        
         <br/>
         <ul>
+          Donations Can Be:
+          <br/>
+          <br/>
           <li>
-            Old Towels
+           - Tax-deductible
           </li>
           <li>
-          Used Medicine Containers
+           - Help others
           </li>
-      </ul>
-              
-            
-        
+          <li>
+           - Good for the Earth
+          </li>
+          <li>
+           - Great to Shop For
+          </li>
+          <li>
+           - Declutter Your Home
+          </li>
+          <li>
+           - Provide Necessities 
+          </li>
+          <li>
+           - Resused
+          </li>
+          <li>
+           - Re-donated
+          </li>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ul>
+            Special Donatable Items:
+            <br/>
+          <br/>
+              <li>
+              - Medicine Containers
+              </li>
+              <li>
+              - Old Towels
+              </li>
+              <li>
+              - Used Shoes
+              </li>
+              <li>
+              - Ripped Clothing
+              </li>
+              <li>
+              - Bags
+              </li>
+              <li>
+              - Soaps and Shampoo
+              </li>
+              <li>
+              - Cars
+              </li>
+              <li>
+              - Pet Food/Supplies
+              </li>
+              <li>
+              - Most Anything
+              </li>
+          </ul>
+          
+      </ul>       
     </div>
-    
-  
+     
     );
   }
 }

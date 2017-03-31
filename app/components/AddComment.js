@@ -1,59 +1,65 @@
 import * as React from 'react';
 import { CommentForm } from './CommentForm';
-import { notification, Row, Col } from 'antd';
 import * as axios from 'axios';
+import { notification, Row, Col } from 'antd';
 
 class AddComment extends React.Component {
 
   // Create Post User Feedback
 
-  startLoading() {
-    this.setState({
-      loading: true
-    });
-  }
-
-  endLoading() {
-    this.setState({
-      loading: false
-    });
-  }
-
-  redirectToPosts() {
-    this.context.router.push('comment');
-  }
-
   sendSuccessNotification() {
     notification['success']({
-      message: 'Yayyy!!',
-      description: 'Your comment has been created.',
+      message: 'Success!',
+      description: 'Added a new Comment',
     });
   }
 
   sendErrorNotification() {
     notification['error']({
-      message: 'Uh Oh',
-      description: 'Something went wrong, please try again.',
+      message: 'Try Again',
+      description: 'An unexpected error occurred, please try again.',
+    });
+  }
+
+  redirectToHome() {
+    this.context.router.push('/home');
+  }
+
+  startLoading(callback, args) {
+    this.setState({
+      loading: true
+    }, () => callback(args));
+  }
+
+  endLoading() {
+    this.setState({
+      loading: false,
     });
   }
 
   // Data Request Methods
 
-  createPost(postObj) {
-    this.startLoading();
-    axios.post('/home', postObj)
-      .then(() => {
-        this.sendSuccessNotification();
+  sendNewCharityRequest(newData) {
+    console.log("newData",newData);
+    axios.post('/add-comment', newData)
+      .then((data) => {
         this.endLoading();
-        this.redirectToPosts();
+        this.sendSuccessNotification();
+        this.redirectToHome();
       })
       .catch((error) => {
-        this.sendErrorNotification();
         this.endLoading();
+        this.sendErrorNotification();
       });
   }
 
-  // Setting Initial State
+  saveNewCharity(newData) {
+    this.startLoading(() =>
+      this.sendNewCharityRequest(newData)
+    );
+  }
+
+  // Initial State
 
   initializeState() {
     this.setState({
@@ -70,16 +76,15 @@ class AddComment extends React.Component {
   render() {
     return (
       <div>
-        <h2>New Post</h2>
-        <PostForm
-          loading={this.state.loading}
-          submitAction={(postObj) => this.createPost(postObj)}
-          defaultTitle={'Subject'}
-          defaultCategory={'CommentTip'}
-          
-        />
-      </div>
-    )
+            <div>
+               
+                <CommentForm
+                 loading={this.state.loading}
+                 action={(newData) => this.saveNewCharity(newData)}                
+                   />
+            </div>
+    </div> 
+    );
   }
 }
 
@@ -87,6 +92,7 @@ class AddComment extends React.Component {
 // Needed to get reference to router context
 // so that we can redirect the user programmatically
 // with react router.
+
 AddComment.contextTypes = {
   router: React.PropTypes.any
 };
